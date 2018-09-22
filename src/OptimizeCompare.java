@@ -1,25 +1,35 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 
 class OptimizeCompare {
 	public static void main(String[] args) {
+		System.out.println("Enter the number of range:");
+		Scanner scanner=new Scanner(System.in);
+		int size=scanner.nextInt();
 		List<Range> list = new ArrayList<Range>();
-		list.add(new Range(1,5));
-		list.add(new Range(7,9));
-		list.add(new Range(2,4));
-		list.add(new Range(8,10));
-		
+		for (int i = 0; i < size; i++) {
+			Scanner sc=new Scanner(System.in);
+			Range range=new Range(sc.nextInt(), sc.nextInt());
+			list.add(range);
+			
+		}
+//		List<Range> list = new ArrayList<Range>();
+//		list.add(new Range(94133,94133));
+//		list.add(new Range(94200,94299));
+//		list.add(new Range(94226,94399));
+	
 		Collections.sort(list, new RangeComparator());
 		
-		System.out.println("Input List");
+		System.out.println("Input Range:");
 		
 		list.forEach(System.out::println);
 		
 		List<Range> newList = mergeRanges(list);
 		
-		System.out.println("Output List");
+		System.out.println("Output Range:");
 		newList.forEach(System.out::println);
 	}
 	
